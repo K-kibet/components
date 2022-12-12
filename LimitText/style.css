@@ -1,0 +1,60 @@
+*, *::before, *::after{
+    box-sizing: border-box;
+}
+
+body{
+    background: #f3f3f3;
+    overflow: hidden;
+}
+
+.card-group{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: .5rem;
+    align-items: flex-start;
+}
+
+.card {
+    background: white;
+    padding: 1rem;
+    border: 1px solid black;
+    border-radius: .25em;
+}
+
+h2, p {
+    margin: 0;
+}
+
+h2{
+    margin-bottom: 1rem;
+}
+
+/*
+.cutoff-text{
+    --max-lines: 3;
+
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: var(--max-lines);
+}
+*/
+.cutoff-text{
+    --max-lines: 3;
+    --line-height: 1.4;
+    
+    line-height: var(--line-height);
+    max-height: calc(var(--max-lines) * 1em * var(--line-height));
+    overflow: hidden;
+    position: relative;
+}
+
+.cutoff-text::before {
+    content: "";
+    position: absolute;
+    height: calc(1em * var(--line-height));
+    width: 100%;
+    bottom: 0;
+    pointer-events: none;
+    background: linear-gradient(to bottom, transparent, white);
+}
